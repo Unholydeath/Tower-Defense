@@ -1,0 +1,6 @@
+package towerDefense.Model;
+
+public class Boss extends Unit{
+
+	
+}
