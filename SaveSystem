@@ -1,0 +1,14 @@
+package towerDefense.Model;
+
+public class SaveSystem {
+
+	private void readFile(String FileName)
+	{
+		
+	}
+
+	private void writeFile()
+	{
+		
+	}
+}
