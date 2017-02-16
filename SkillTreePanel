@@ -1,0 +1,7 @@
+package towerDefense.View;
+
+import javax.swing.JPanel;
+
+public class SkillTreePanel extends JPanel{
+
+}
