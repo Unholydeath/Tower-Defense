@@ -1,0 +1,24 @@
+package towerDefense.Model;
+
+public abstract class Unit
+{
+	private int hitPoints;
+
+	private int speed;
+
+	public int GetHitPoints()
+	{
+		return hitPoints;
+	}
+
+	public void StartRunning()
+	{
+		
+	}
+
+	public void AttackEnd()
+	{
+		
+	}
+
+}
