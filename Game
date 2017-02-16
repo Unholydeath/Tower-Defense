@@ -1,0 +1,20 @@
+package towerDefense.Controller;
+
+public class Game {
+
+	private int lifeCount;
+	private int goldAmount;
+	private int waveCount;
+
+	private Difficulty difficulty;
+
+	private void newWave(int waveCount, Difficulty difficulty)
+	{
+		
+	}
+
+	public void LossLife()
+	{
+		
+	}
+}
