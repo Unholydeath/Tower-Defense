@@ -1,0 +1,9 @@
+package towerDefense.Model;
+
+public class LightTower extends Tower{
+
+	private void upgrade()
+	{
+		
+	}
+}
