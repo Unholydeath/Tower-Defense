@@ -1,0 +1,27 @@
+package towerDefense.Model;
+
+public class Tower {
+
+	private int cost;
+
+	private int resaleValue;
+
+	public void Attack(){
+		
+	}
+
+	public int GetCost()
+	{
+		return cost;
+	}
+
+	public void Sell()
+	{
+		
+	}
+
+	public int GetResaleValue()
+	{
+		return resaleValue;
+	}
+}
