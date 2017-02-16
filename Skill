@@ -1,0 +1,27 @@
+package towerDefense.Model;
+
+public class Skill {
+
+	private String description;
+
+	private int modifier;
+
+	private Skill dependancy;
+
+	private boolean picked;
+
+	public String GetDescription()
+	{
+		return description;
+	}
+
+	public Skill GetDependancy()
+	{
+		return dependancy;
+	}
+
+	public int GetModifier()
+	{
+		return modifier;
+	}
+}
