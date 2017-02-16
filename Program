@@ -1,0 +1,18 @@
+package towerDefense.Controller;
+
+public class Program {
+
+	public static void main(String[] args){
+		
+	}
+	
+	private void newGame(Difficulty GameDifficulty)
+	{
+		
+	}
+
+	private void loadGame()
+	{
+		
+	}
+}
