@@ -1,8 +1,5 @@
-public class CannonTower{
+package towerDefense.Model;
 
-    public CannonTower(){
-    
-        //stuff
-    
-    }
+public class CannonTower {
+
 }
