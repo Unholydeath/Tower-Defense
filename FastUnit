@@ -1,0 +1,5 @@
+package towerDefense.Model;
+
+public class FastUnit extends Unit{
+
+}
