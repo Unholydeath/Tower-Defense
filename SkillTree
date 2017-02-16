@@ -1,0 +1,13 @@
+package towerDefense.Model;
+
+import java.util.List;
+
+public class SkillTree {
+
+	private List<Skill> Skills;
+
+	public void SelectSkill()
+	{
+		
+	}
+}
