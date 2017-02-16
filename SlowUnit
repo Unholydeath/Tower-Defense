@@ -1,0 +1,5 @@
+package towerDefense.Model;
+
+public class SlowUnit extends Unit{
+
+}
