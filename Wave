@@ -1,0 +1,25 @@
+package towerDefense.Model;
+
+public class Wave {
+
+	private int ENEMYCOUNT;
+
+	private int waveCount;
+
+	private double difficultyModifier;
+
+	public Wave(int WaveCount)
+	{
+		waveCount = WaveCount;
+	}
+	
+	private void createEnemies()
+	{
+		
+	}
+
+	private void createBoss()
+	{
+		
+	}
+}
