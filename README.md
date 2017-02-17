@@ -1,3 +1,2 @@
 # Tower-Defense
-A Java tower defense
-You better believe it's a tower defense!
+A Java tower defense with a GUI and basic animation.
