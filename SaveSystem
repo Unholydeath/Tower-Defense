@@ -1,14 +1,41 @@
 package towerDefense.Model;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+
+import towerDefense.Controller.Game;
+
 public class SaveSystem {
 
-	private void readFile(String FileName)
+	private RandomAccessFile fileReader;
+	private int maxIndex = 50000;
+	
+	private void readFile(String FileName) throws FileNotFoundException
 	{
-		
+		fileReader = new RandomAccessFile(FileName, "rw");
 	}
 
-	private void writeFile()
+	public void SaveGame(Game game) throws IOException
 	{
-		
+		int index = makeIndex(game.getBoardString());
+		fileReader.seek(index);
+		fileReader.write(game.getSerialized().getBytes());
+	}
+	
+	private int makeIndex(String boardString){
+		int index = Math.abs(boardString.hashCode() % maxIndex);
+		return index;
+	}
+	
+	public Game LoadGame(Game game) throws IOException{
+		int index = makeIndex(game.getBoardString());
+		fileReader.seek(index);
+		byte[] buffer = new byte[1044];
+		fileReader.read(buffer);
+		String contactLine = new String(buffer);
+		Game newGame = new Game(game.getBoard(), game.getLifeCount(), game.getGoldAmount(), game.getWaveCount(), game.getDifficulty());
+		newGame.readRegex(contactLine);
+		return newGame;
 	}
 }
