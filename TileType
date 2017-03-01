@@ -1,0 +1,11 @@
+package towerDefense.Model;
+
+public enum TileType {
+
+	TOWER,
+	UNIT,
+	PATH,
+	GRASS,
+	START,
+	END
+}
