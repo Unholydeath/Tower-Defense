@@ -1,0 +1,28 @@
+package towerDefense.Model;
+
+public class Tile <T> {
+
+	private TileType tileType;
+	private T objectOnTile;
+	
+	public Tile(TileType tileType, T object){
+		this.tileType = tileType;
+		this.objectOnTile = object;
+	}
+	
+	public TileType getTileType(){
+		return tileType;
+	}
+	
+	public T getObjectOnTile(){
+		return objectOnTile;
+	}
+	
+	public void setTileType(TileType newTileType){
+		tileType = newTileType;
+	}
+	
+	public void setObjectOnTile(T unitTower){
+		objectOnTile = unitTower;
+	}
+}
