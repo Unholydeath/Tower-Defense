@@ -1,13 +1,45 @@
 package towerDefense.Controller;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import towerDefense.Model.Board;
+import towerDefense.Model.CannonTower;
+import towerDefense.Model.HeavyCannonTower;
+import towerDefense.Model.HeavyTower;
+import towerDefense.Model.LightTower;
+import towerDefense.Model.Tile;
+import towerDefense.Model.TileType;
+
 public class Game {
 
+	private Board currentBoard;
 	private int lifeCount;
 	private int goldAmount;
 	private int waveCount;
-
 	private Difficulty difficulty;
-
+	
+	private int boardLimit = 144;
+	private int lifeLimit = 2;
+	private int goldLimit = 6;
+	private int waveLimit = 2;
+	private int difficultyLimit = 1;
+	
+	private final int MAX_BOARD_COLUMNS = 12;
+	private final int MAX_BOARD_ROWS = 12;
+	
+	private String boardString;
+	private int startNumber;
+	private int endNumber;
+	
+	public Game(Board board, int lifeCount, int goldAmount, int waveCount, Difficulty difficulty){
+		this.currentBoard = board;
+		this.lifeCount = lifeCount;
+		this.goldAmount = goldAmount;
+		this.waveCount = waveCount;
+		this.difficulty = difficulty;
+	}
+	
 	private void newWave(int waveCount, Difficulty difficulty)
 	{
 		
@@ -15,6 +47,195 @@ public class Game {
 
 	public void LossLife()
 	{
+		lifeCount -= 1;
+	}
+	
+	private String boardToString(){
 		
+		Tile currentTile;
+		boardString = "";
+		
+		for(int i = 0; i < currentBoard.getNumberOfColumns(); i++){
+			
+			for(int j = 0; j < currentBoard.getNumberOfRows(); j++){
+				
+				currentTile = currentBoard.getBoardTiles()[i][j];
+				
+				if(currentTile.getTileType() != null){
+					
+					if(currentTile.getTileType() == TileType.GRASS){
+						boardString += "G";
+					} else if(currentTile.getTileType() == TileType.PATH){
+						boardString += "P";
+					} else if(currentTile.getTileType() == TileType.START){
+						boardString += "S";
+					} else if(currentTile.getTileType() == TileType.END){
+						boardString += "D";
+					} else{
+						boardString += currentTile.getObjectOnTile().getSaveLetter();
+					}
+				} else{
+					return null;
+				}
+			}
+		}
+		
+		return boardString;
+	}
+	
+	public String getSerialized(){
+		
+		String serialized = "";
+	
+		//serialize board
+		serialized += boardString;
+		
+		//serialize life count
+		
+		String stringLifeCount = "" + lifeCount;
+		
+		if(stringLifeCount.length() < 2){
+			stringLifeCount = "0" + stringLifeCount;
+		}
+		
+		serialized += stringLifeCount;
+		
+		//serialize gold amount
+		String goldString = "" + goldAmount;
+		
+		if(goldString.length() < 6){
+			
+			int lengthToAdd = 6 - goldString.length();
+			
+			for(int i = 0; i < lengthToAdd; i++){
+				
+				goldString = "0" + goldString;
+			}
+		}		
+		serialized += goldString;
+		
+		//serialize difficulty
+		
+		if(difficulty == Difficulty.EASY){
+			serialized += "E";
+			
+		} else if(difficulty == Difficulty.MEDIUM){
+			serialized += "M";
+		} else{
+			serialized += "H";
+		}
+		
+		return serialized;
+	}
+	
+	public void readRegex(String gameString){
+		
+		String fileString = gameString;
+		String filePattern = "([GPSDLVCN]{144})([0-9]{2})([0-9]{6})([0-9]{2})([EMH])";
+		
+		Pattern pFile = Pattern.compile(filePattern);
+		
+		Matcher fileMatcher = pFile.matcher(gameString);
+		
+		if(fileMatcher.find()){
+			System.out.println("File Found!");
+			this.currentBoard = loadBoard(fileMatcher.group(1));
+			this.lifeCount = Integer.parseInt(fileMatcher.group(2));
+			this.goldAmount = Integer.parseInt(fileMatcher.group(3));
+			this.waveCount = Integer.parseInt(fileMatcher.group(4));
+			
+			if(fileMatcher.group(5).charAt(0) == 'E'){
+				this.difficulty = Difficulty.EASY;
+				
+			} else if(fileMatcher.group(5).charAt(0) == 'M'){
+				this.difficulty = Difficulty.MEDIUM;
+				
+			} else{
+				this.difficulty = Difficulty.HARD;
+			}
+			
+		} else{
+			System.out.println("No file found :(");
+		}
+	}
+	
+	private Board loadBoard(String match){
+		
+		Board newBoard = new Board();
+		Tile[][] tiles = new Tile[MAX_BOARD_COLUMNS][MAX_BOARD_ROWS];
+		Tile boardTile;
+		
+		int column;
+		int row;
+		
+		for(int i = 0; i < match.length(); i++){
+			
+			column = i / MAX_BOARD_ROWS;
+			row = i % MAX_BOARD_ROWS;
+			
+			if(match.charAt(i) == 'G'){
+				boardTile = new Tile(TileType.GRASS, null);
+				tiles[column][row] = boardTile;
+				
+			} else if(match.charAt(i) == 'P'){
+				boardTile = new Tile(TileType.PATH, null);
+				tiles[column][row] = boardTile;
+				
+			} else if(match.charAt(i) == 'S'){
+				boardTile = new Tile(TileType.START, null);
+				tiles[column][row] = boardTile;
+				
+			} else if(match.charAt(i) == 'E'){
+				boardTile = new Tile(TileType.END, null);
+				tiles[column][row] = boardTile;
+				
+			} else if(match.charAt(i) == 'L'){
+				boardTile = new Tile(TileType.TOWER, new LightTower());
+				tiles[column][row] = boardTile;
+				
+			} else if(match.charAt(i) == 'V'){
+				boardTile = new Tile(TileType.TOWER, new HeavyTower());
+				tiles[column][row] = boardTile;
+				
+			} else if(match.charAt(i) == 'C'){
+				boardTile = new Tile(TileType.TOWER, new CannonTower());
+				tiles[column][row] = boardTile;
+				
+			}else if(match.charAt(i) == 'N'){
+				boardTile = new Tile(TileType.TOWER, new HeavyCannonTower());
+				tiles[column][row] = boardTile;
+			}
+		}
+		newBoard.setBoardTiles(tiles);
+		return newBoard;
+	}
+	
+	private void setNewNumbers(int num1){
+		startNumber = endNumber;
+		endNumber += num1;
+	}
+	
+	public Board getBoard(){
+		return currentBoard;
+	}
+	
+	public String getBoardString(){
+		return boardString;
+	}
+	
+	public int getLifeCount(){
+		return lifeCount;
+	}
+	
+	public int getGoldAmount(){
+		return goldAmount;
+	}
+	
+	public int getWaveCount(){
+		return waveCount;
+	}
+	
+	public Difficulty getDifficulty(){
+		return difficulty;
 	}
 }
