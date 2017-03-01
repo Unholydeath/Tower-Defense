@@ -1,0 +1,27 @@
+package towerDefense.Model;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+
+public class Board {
+
+	private Tile[][] BoardTiles;
+	private int numberOfRows = 12;
+	private int numberOfColumns = 12;
+	
+	public Tile[][] getBoardTiles(){
+		return BoardTiles;
+	}
+	
+	public int getNumberOfRows(){
+		return numberOfRows;
+	}
+	
+	public int getNumberOfColumns(){
+		return numberOfColumns;
+	}
+	
+	public void setBoardTiles(Tile[][] tiles){
+		BoardTiles = tiles;
+	}
+}
