@@ -10,6 +10,7 @@ import towerDefense.Model.HeavyTower;
 import towerDefense.Model.LightTower;
 import towerDefense.Model.Tile;
 import towerDefense.Model.TileType;
+import towerDefense.Model.Wave;
 
 public class Game {
 
@@ -42,7 +43,7 @@ public class Game {
 	
 	private void newWave(int waveCount, Difficulty difficulty)
 	{
-		
+		new Wave(waveCount, difficulty);
 	}
 
 	public void LossLife()
@@ -238,4 +239,6 @@ public class Game {
 	public Difficulty getDifficulty(){
 		return difficulty;
 	}
+}
+
 }
