@@ -1,7 +1,9 @@
 package towerDefense.Model;
 
 public class FastUnit extends Unit{
-	private int hitPoints = 1;
+		private int hitPoints = 1;
+	
+	private int lifePoints = 5;
 
 	private int speed = 3;
 	private int x;
@@ -23,5 +25,9 @@ public class FastUnit extends Unit{
 		//if(x == end && y == end){
 		//	life - hitPoints;
 		//}
+		
+		if(lifePoints == 0){
+			System.out.println("Dead");
+		}
 	}
 }
