@@ -1,5 +1,27 @@
 package towerDefense.Model;
 
 public class FastUnit extends Unit{
+	private int hitPoints = 1;
 
+	private int speed = 3;
+	private int x;
+	private int y;
+
+	public int GetHitPoints()
+	{
+		return hitPoints;
+	}
+
+	public void StartRunning()
+	{
+		x += speed;
+		y += speed;
+	}
+
+	public void AttackEnd()
+	{
+		//if(x == end && y == end){
+		//	life - hitPoints;
+		//}
+	}
 }
