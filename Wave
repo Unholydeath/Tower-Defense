@@ -20,7 +20,7 @@ public class Wave {
 		Random rand = new Random();
 		int choose = rand.nextInt(3) + 1;
 		if(choose == 1){
-			
+			new NormalUnit();
 		}
 		else if(choose == 2){
 			new SlowUnit();
