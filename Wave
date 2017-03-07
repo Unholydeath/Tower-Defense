@@ -23,17 +23,17 @@ public class Wave {
 			
 		}
 		else if(choose == 2){
-			
+			new SlowUnit();
 		}
 		else if(choose == 3){
-			
+			new FastUnit();
 		}
 	}
 
 	private void createBoss()
 	{
 		if(waveCount == 5){
-			
+			new Boss();
 		}
 	}
 }
