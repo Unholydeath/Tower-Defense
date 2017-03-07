@@ -1,13 +1,39 @@
 package towerDefense.Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SkillTree {
 
 	private List<Skill> Skills;
 
-	public void SelectSkill()
+	public SkillTree(){
+		newSkillTree();
+	}
+	
+	private void newSkillTree(){
+		Skills = new ArrayList();
+
+		Skill start = new Skill("Increase your life count by 20", 20, null, false);
+		Skill light1 = new Skill("Increase light tower attack by 5", 5, start, false);
+		Skill light2 = new Skill("Reduce light tower cost by 30", 30, light1, false);
+		Skill light3 = new Skill("Reduce upgrade cost by 50", 50, light1, false);
+		Skill cannon1 = new Skill("Increase cannon tower attack by 8", 8, start, false);
+		Skill cannon2 = new Skill("Reduce cannon tower cost by 50", 50, cannon1, false);
+		Skill cannon3 = new Skill("Reduce upgrade cost by 75", 75, cannon1, false);
+		Skills.add(start);
+		Skills.add(light1);
+		Skills.add(light2);
+		Skills.add(light3);
+		Skills.add(cannon1);
+		Skills.add(cannon2);
+		Skills.add(cannon3);
+	}
+	
+	public void SelectSkill(Skill skill)
 	{
-		
+		if(skill.GetDependancy().GetIsPicked()){
+			skill.setPicked(true);
+		}
 	}
 }
