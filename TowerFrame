@@ -1,7 +1,0 @@
-package towerDefense.View;
-
-import javax.swing.JFrame;
-
-public class TowerFrame extends JFrame{
-
-}
