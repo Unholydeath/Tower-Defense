@@ -1,7 +1,46 @@
 package towerDefense.View;
 
 import javax.swing.JPanel;
+import javax.swing.JButton;
+import java.awt.Color;
 
-public class SkillTreePanel extends JPanel{
+public class SkillTreePanel extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	public SkillTreePanel() {
+		setBackground(Color.GREEN);
+		setLayout(null);
+		
+		JButton btnLCost = new JButton("LCost");
+		btnLCost.setBounds(17, 31, 83, 31);
+		add(btnLCost);
+		
+		JButton btnCCost = new JButton("CCost");
+		btnCCost.setBounds(271, 31, 83, 31);
+		add(btnCCost);
+		
+		JButton btnLUpgrade = new JButton("LUpgrade");
+		btnLUpgrade.setBounds(107, 31, 113, 31);
+		add(btnLUpgrade);
+		
+		JButton btnCUpgrade = new JButton("CUpgrade");
+		btnCUpgrade.setBounds(390, 31, 123, 31);
+		add(btnCUpgrade);
+		
+		JButton btnLightSkill = new JButton("Light");
+		btnLightSkill.setBounds(77, 98, 83, 31);
+		add(btnLightSkill);
+		
+		JButton btnCannon = new JButton("Cannon");
+		btnCannon.setBounds(328, 98, 97, 31);
+		add(btnCannon);
+		
+		JButton btnLives = new JButton("Lives");
+		btnLives.setBounds(203, 167, 83, 31);
+		add(btnLives);
+
+	}
 
 }
