@@ -1,7 +1,140 @@
 package towerDefense.View;
 
 import javax.swing.JPanel;
+import java.awt.GridBagLayout;
+import javax.swing.JLabel;
+import java.awt.GridBagConstraints;
+import java.awt.Font;
+import java.awt.Insets;
+import javax.swing.JButton;
+import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
 
-public class GamePanel extends JPanel{
+public class GamePanel extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	public GamePanel() {
+		setBackground(Color.GREEN);
+		GridBagLayout gridBagLayout = new GridBagLayout();
+		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		setLayout(gridBagLayout);
+		
+		JLabel lblNewLabel_1 = new JLabel("New label");
+		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
+		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_1.gridx = 2;
+		gbc_lblNewLabel_1.gridy = 2;
+		add(lblNewLabel_1, gbc_lblNewLabel_1);
+		
+		JLabel lblWave = new JLabel("Wave:");
+		lblWave.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		GridBagConstraints gbc_lblWave = new GridBagConstraints();
+		gbc_lblWave.insets = new Insets(0, 0, 5, 5);
+		gbc_lblWave.gridx = 13;
+		gbc_lblWave.gridy = 2;
+		add(lblWave, gbc_lblWave);
+		
+		JLabel lblWaveNumber = new JLabel("##");
+		lblWaveNumber.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		GridBagConstraints gbc_lblWaveNumber = new GridBagConstraints();
+		gbc_lblWaveNumber.gridwidth = 2;
+		gbc_lblWaveNumber.insets = new Insets(0, 0, 5, 5);
+		gbc_lblWaveNumber.gridx = 14;
+		gbc_lblWaveNumber.gridy = 2;
+		add(lblWaveNumber, gbc_lblWaveNumber);
+		
+		JLabel lblLife = new JLabel("Lives:");
+		lblLife.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLife.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		GridBagConstraints gbc_lblLife = new GridBagConstraints();
+		gbc_lblLife.fill = GridBagConstraints.HORIZONTAL;
+		gbc_lblLife.anchor = GridBagConstraints.BASELINE;
+		gbc_lblLife.insets = new Insets(0, 0, 5, 5);
+		gbc_lblLife.gridx = 13;
+		gbc_lblLife.gridy = 3;
+		add(lblLife, gbc_lblLife);
+		
+		JLabel lblLifeNumber = new JLabel("###");
+		GridBagConstraints gbc_lblLifeNumber = new GridBagConstraints();
+		gbc_lblLifeNumber.gridwidth = 2;
+		gbc_lblLifeNumber.insets = new Insets(0, 0, 5, 5);
+		gbc_lblLifeNumber.gridx = 14;
+		gbc_lblLifeNumber.gridy = 3;
+		add(lblLifeNumber, gbc_lblLifeNumber);
+		
+		JLabel lblGold = new JLabel("Gold:");
+		lblGold.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		GridBagConstraints gbc_lblGold = new GridBagConstraints();
+		gbc_lblGold.insets = new Insets(0, 0, 5, 5);
+		gbc_lblGold.gridx = 13;
+		gbc_lblGold.gridy = 4;
+		add(lblGold, gbc_lblGold);
+		
+		JLabel lblNewLabel = new JLabel("######");
+		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+		gbc_lblNewLabel.gridwidth = 2;
+		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel.gridx = 14;
+		gbc_lblNewLabel.gridy = 4;
+		add(lblNewLabel, gbc_lblNewLabel);
+		
+		JButton btnLightTower = new JButton("LT");
+		GridBagConstraints gbc_btnLightTower = new GridBagConstraints();
+		gbc_btnLightTower.anchor = GridBagConstraints.NORTH;
+		gbc_btnLightTower.insets = new Insets(0, 0, 5, 5);
+		gbc_btnLightTower.gridx = 13;
+		gbc_btnLightTower.gridy = 6;
+		add(btnLightTower, gbc_btnLightTower);
+		
+		JButton btnCannonTower = new JButton("CT");
+		GridBagConstraints gbc_btnCannonTower = new GridBagConstraints();
+		gbc_btnCannonTower.insets = new Insets(0, 0, 5, 5);
+		gbc_btnCannonTower.gridx = 14;
+		gbc_btnCannonTower.gridy = 6;
+		add(btnCannonTower, gbc_btnCannonTower);
+		
+		JLabel lblTowerName = new JLabel("TowerName");
+		lblTowerName.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		GridBagConstraints gbc_lblTowerName = new GridBagConstraints();
+		gbc_lblTowerName.gridwidth = 2;
+		gbc_lblTowerName.insets = new Insets(0, 0, 5, 5);
+		gbc_lblTowerName.gridx = 13;
+		gbc_lblTowerName.gridy = 8;
+		add(lblTowerName, gbc_lblTowerName);
+		
+		JButton btnUpgrade = new JButton("Upgade");
+		btnUpgrade.setHorizontalAlignment(SwingConstants.LEFT);
+		btnUpgrade.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnUpgrade.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		GridBagConstraints gbc_btnUpgrade = new GridBagConstraints();
+		gbc_btnUpgrade.gridwidth = 2;
+		gbc_btnUpgrade.anchor = GridBagConstraints.EAST;
+		gbc_btnUpgrade.insets = new Insets(0, 0, 5, 5);
+		gbc_btnUpgrade.gridx = 13;
+		gbc_btnUpgrade.gridy = 9;
+		gbc_btnUpgrade.fill = GridBagConstraints.BOTH;
+		add(btnUpgrade, gbc_btnUpgrade);
+		
+		JButton btnSell = new JButton("Sell");
+		btnSell.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		GridBagConstraints gbc_btnSell = new GridBagConstraints();
+		gbc_btnSell.gridwidth = 2;
+		gbc_btnSell.insets = new Insets(0, 0, 0, 5);
+		gbc_btnSell.gridx = 13;
+		gbc_btnSell.gridy = 10;
+		gbc_btnSell.fill = GridBagConstraints.BOTH;
+		add(btnSell, gbc_btnSell);
+
+	}
 
 }
