@@ -1,7 +1,36 @@
 package towerDefense.View;
 
 import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import java.awt.Color;
 
-public class MainMenuPanel extends JPanel{
+public class MainMenuPanel extends JPanel {
 
+	/**
+	 * Create the panel.
+	 */
+	public MainMenuPanel() {
+		setBackground(Color.GREEN);
+		setLayout(null);
+		
+		JButton btnNewButton = new JButton("New Game");
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		btnNewButton.setBounds(139, 330, 161, 55);
+		add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Load Game");
+		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		btnNewButton_1.setBounds(500, 330, 164, 55);
+		add(btnNewButton_1);
+		
+		JLabel lblTowerDefense = new JLabel("Tower Defense");
+		lblTowerDefense.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTowerDefense.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblTowerDefense.setBounds(285, 100, 238, 55);
+		add(lblTowerDefense);
+
+	}
 }
