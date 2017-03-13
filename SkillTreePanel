@@ -3,6 +3,7 @@ package towerDefense.View;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.awt.Color;
+import java.awt.Font;
 
 public class SkillTreePanel extends JPanel {
 
@@ -14,33 +15,39 @@ public class SkillTreePanel extends JPanel {
 		setLayout(null);
 		
 		JButton btnLCost = new JButton("LCost");
-		btnLCost.setBounds(17, 31, 83, 31);
+		btnLCost.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnLCost.setBounds(272, 72, 200, 110);
 		add(btnLCost);
 		
 		JButton btnCCost = new JButton("CCost");
-		btnCCost.setBounds(271, 31, 83, 31);
+		btnCCost.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnCCost.setBounds(1547, 79, 164, 96);
 		add(btnCCost);
 		
 		JButton btnLUpgrade = new JButton("LUpgrade");
-		btnLUpgrade.setBounds(107, 31, 113, 31);
+		btnLUpgrade.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnLUpgrade.setBounds(964, 76, 218, 103);
 		add(btnLUpgrade);
 		
 		JButton btnCUpgrade = new JButton("CUpgrade");
-		btnCUpgrade.setBounds(390, 31, 123, 31);
+		btnCUpgrade.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnCUpgrade.setBounds(2142, 79, 179, 96);
 		add(btnCUpgrade);
 		
 		JButton btnLightSkill = new JButton("Light");
-		btnLightSkill.setBounds(77, 98, 83, 31);
+		btnLightSkill.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnLightSkill.setBounds(617, 457, 239, 115);
 		add(btnLightSkill);
 		
 		JButton btnCannon = new JButton("Cannon");
-		btnCannon.setBounds(328, 98, 97, 31);
+		btnCannon.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnCannon.setBounds(1830, 476, 218, 96);
 		add(btnCannon);
 		
 		JButton btnLives = new JButton("Lives");
-		btnLives.setBounds(203, 167, 83, 31);
+		btnLives.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnLives.setBounds(1174, 885, 255, 110);
 		add(btnLives);
 
 	}
-
 }
