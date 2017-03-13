@@ -14,6 +14,13 @@ import java.awt.Color;
 
 public class GamePanel extends JPanel {
 
+	private final int NUMBER_OF_COLUMNS = 12;
+	private final int NUMBER_OF_ROWS = 12;
+	private final int BUTTON_WIDTH = 100;
+	private final int BUTTON_LENGTH = 150;
+	private final int STARTX = 125;
+	private final int STARTY = 75;
+	
 	/**
 	 * Create the panel.
 	 */
@@ -82,6 +89,26 @@ public class GamePanel extends JPanel {
 		btnSell.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		add(btnSell);
 
+		createTiles();
 	}
 
+	private void createTiles(){
+		
+		int currentX = STARTX;
+		int currentY = STARTY;
+		
+		for(int i = 0; i < NUMBER_OF_COLUMNS; i++){
+		
+			for(int j = 0; j < NUMBER_OF_ROWS; j++){
+				
+				JButton btn = new JButton();
+				btn.setBounds(currentX, currentY, BUTTON_LENGTH, BUTTON_WIDTH);
+				add(btn);
+				currentX += BUTTON_LENGTH;
+			}
+			
+			currentX = STARTX;
+			currentY += BUTTON_WIDTH;
+		}
+	}
 }
