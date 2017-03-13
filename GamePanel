@@ -8,12 +8,24 @@ import java.awt.Font;
 import java.awt.Insets;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
+
+import towerDefense.Controller.Game;
+import towerDefense.Model.Board;
+import towerDefense.Model.Difficulty;
+import towerDefense.Model.SaveSystem;
+
 import java.awt.event.ActionListener;
+import java.io.FileReader;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 
 public class GamePanel extends JPanel {
 
+	private FileReader reader;
+	
+	private SaveSystem saver = new SaveSystem("newBoard.txt");
+	
 	private final int NUMBER_OF_COLUMNS = 12;
 	private final int NUMBER_OF_ROWS = 12;
 	private final int BUTTON_WIDTH = 100;
@@ -23,8 +35,10 @@ public class GamePanel extends JPanel {
 	
 	/**
 	 * Create the panel.
+	 * @throws IOException 
 	 */
-	public GamePanel() {
+	public GamePanel() throws IOException {
+		
 		setBackground(Color.GREEN);
 		setLayout(null);
 		
@@ -92,7 +106,9 @@ public class GamePanel extends JPanel {
 		createTiles();
 	}
 
-	private void createTiles(){
+	private void createTiles() throws IOException{
+		
+		saver.LoadGame(new Game(new Board(), 75, 0, 0, Difficulty.MEDIUM));
 		
 		int currentX = STARTX;
 		int currentY = STARTY;
